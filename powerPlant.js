@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////
+////////// The following are extended examples of how to use ///////////
+////////// the storestate and changeState functions to create a game ///
+////////// based on the power plant prompt from Tuesday's lesson ///////
+////////// of React's functional programming week on LHTP.com //////////
+////////////////////////////////////////////////////////////////////////
+
+
+
 // This function stores our state in an object called currentState. 
 // This function also updates the state of our object. It updates state in the inner funciton by calling the stateChangeFunction that we pass into storeState's inner function. The stateChangeFunction refers to the many funcitons we create using the changeState function below to update specific properties in our state object. 
 // NOTE: we are passing in a parameter to storeState that sets the initial state, or initial values of the function.
