@@ -25,7 +25,7 @@ const changeState = (prop) => {
     return (state) => { ({
       ...state,
       [prop] : (state[prop] || 0) + value
-    }) 
+    })} 
   }
 }
 
