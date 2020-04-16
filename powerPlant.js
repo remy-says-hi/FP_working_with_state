@@ -22,12 +22,14 @@ const storeState = (initialState) => {
 // This is a function factory. We can easily create more specific functions that alter a plant's soil, water, and light to varying degrees.
 const changeState = (prop) => {
   return (value) => {
-    return (state) => { ({
+    return (state) => ({
       ...state,
       [prop] : (state[prop] || 0) + value
-    })} 
+    })
   }
 }
+
+
 
 ///////////////////////////////////////////
 // Creating plants ///////////////////////
@@ -42,7 +44,10 @@ const sunFlower = storeState(initialValues);
 const feed = changeState("soil");
 const blueFood = feed(5);
 const newFernState = fern(blueFood);
+console.log("add 5 to soil", newFernState);
 // newFernState = {soil: 5, light: 0, water: 0}
+
+
 
 
 /////////////////////////////////////////
@@ -55,13 +60,15 @@ const gameMaster = storeState(initialGameValues);
 
 //using changeState as our function factory for the game data
 const updatePlayerName = changeState("playerName");
-const addNewPlayerToName = newPlayer("Sandy");
+const addNewPlayerToName = updatePlayerName("Sandy");
 const updatedGameObj = gameMaster(addNewPlayerToName);
 // updatedGameObj = { numberOfPlantsAlive: 0, numberOfPlantsDead: 0, playerName: "Sandy" };
 
 const addNewPlant = changeState("numberOfPlantsAlive")(1);
-const updatedGameObj = gameMaster(addNewPlant);
+const updatedGameObjAgain = gameMaster(addNewPlant);
 // updatedGameObj = { numberOfPlantsAlive: 1, numberOfPlantsDead: 0, playerName: "Sandy" };
+
+
 
 
 /////////////////////////////////////////
@@ -76,6 +83,8 @@ const weatherChanger = storeState(initialWeatherValues);
 const hereComesTheStorm = changeState("storm")(true);
 const theStormIsHere = weatherChanger(hereComesTheStorm);
 // theStormIsHere = {wind: 2, sunCover: 8, rain: 0, storm: true, overcast: false, cloudCover: 2};
+
+
 
 /////////////////////////////////////////
 // Weather events affecting plants /////
